@@ -32,7 +32,7 @@ interface AppComponent {
     fun inject(activity: MainActivity)
 
     //fragments
-    fun inject(fragment: MainFragment)
+    fun inject(fragment: HomeFragment)
 
     //viewmodel
     fun inject(viewModel: PhotoViewModel)
