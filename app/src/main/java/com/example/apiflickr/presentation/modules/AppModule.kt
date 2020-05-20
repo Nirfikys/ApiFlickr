@@ -1,4 +1,4 @@
-package com.example.apiflickr.presentation
+package com.example.apiflickr.presentation.modules
 
 import android.content.Context
 import com.example.apiflickr.domain.photo.PhotoRemote

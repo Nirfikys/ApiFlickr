@@ -1,8 +1,9 @@
 package com.example.apiflickr.ui
 
 import android.app.Application
-import com.example.apiflickr.presentation.AppModule
-import com.example.apiflickr.presentation.RemoteModule
+import com.example.apiflickr.presentation.modules.AppModule
+import com.example.apiflickr.presentation.modules.RemoteModule
+import com.example.apiflickr.presentation.viewmodels.PhotoViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -34,4 +35,5 @@ interface AppComponent {
     fun inject(fragment: MainFragment)
 
     //viewmodel
+    fun inject(viewModel: PhotoViewModel)
 }
