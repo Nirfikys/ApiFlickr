@@ -1,5 +1,6 @@
 package com.example.apiflickr.domain
 
+import com.example.apiflickr.domain.photo.PhotoEntity
 import com.example.apiflickr.remote.photo.PageResponse
 import com.example.apiflickr.remote.photo.Photo
 

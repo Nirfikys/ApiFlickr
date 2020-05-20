@@ -1,7 +1,7 @@
 package com.example.apiflickr.remote.photo
 
 import com.example.apiflickr.domain.Page
-import com.example.apiflickr.domain.PhotoRemote
+import com.example.apiflickr.domain.photo.PhotoRemote
 import com.example.apiflickr.domain.toEntity
 import com.example.apiflickr.remote.core.Request
 import com.example.apiflickr.remote.service.ApiService

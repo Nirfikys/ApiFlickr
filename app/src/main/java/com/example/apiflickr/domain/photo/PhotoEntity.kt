@@ -1,4 +1,4 @@
-package com.example.apiflickr.domain
+package com.example.apiflickr.domain.photo
 
 data class PhotoEntity(
     val id: String,
