@@ -27,13 +27,17 @@ class PhotoViewModel : BaseViewModel() {
         }
 
     @SuppressLint("CheckResult")
-    fun getPreview() {
+    fun searchPhoto(text: String) {
         Observable.create<Page> {
-            it.onNext(photoRepository.searchPhotos("cat"))
+            it.onNext(photoRepository.searchPhotos(text))
             it.onComplete()
         }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({ handleValidResult(pagePhotoData, it) }, { handleFailure(it) })
+    }
+
+    fun getPreview() {
+        searchPhoto("cat")
     }
 }

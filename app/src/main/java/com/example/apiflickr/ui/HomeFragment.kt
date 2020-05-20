@@ -36,6 +36,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupView() {
+        binding.searchButton.setOnClickListener {
+            photoModel.searchPhoto(
+                binding.searchEt.text.toString()
+            )
+        }
         binding.photoRv.layoutManager = GridLayoutManager(context, 3)
         binding.photoRv.adapter = adapter
 
