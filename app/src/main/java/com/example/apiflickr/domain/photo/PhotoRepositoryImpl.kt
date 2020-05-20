@@ -9,4 +9,8 @@ class PhotoRepositoryImpl @Inject constructor(
     override fun searchPhotos(text: String, page: Int): Page {
         return remote.searchPhotos(text, page)
     }
+
+    override fun getPhotoInfo(id: String): PhotoInfoEntity {
+        return remote.getPhotoInfo(id)
+    }
 }

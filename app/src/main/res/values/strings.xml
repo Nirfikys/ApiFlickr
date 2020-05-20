@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ApiFlickr</string>
+    <string name="comments">comments:</string>
 </resources>

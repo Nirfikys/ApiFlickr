@@ -23,6 +23,7 @@ class ExampleUnitTest {
         val api = ServiceFactory.makeService(true)
         val context = mock(Context::class.java)
         val remote = PhotoRemoteImpl(Request(NetworkHandler(context)), api)
-        remote.searchPhotos(text)
+//        remote.searchPhotos(text)
+        remote.getPhotoInfo("49915521846")
     }
 }

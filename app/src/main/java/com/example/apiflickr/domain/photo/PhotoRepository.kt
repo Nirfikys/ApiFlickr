@@ -4,4 +4,5 @@ import com.example.apiflickr.domain.Page
 
 interface PhotoRepository {
     fun searchPhotos(text: String, page: Int = 1): Page
+    fun getPhotoInfo(id: String): PhotoInfoEntity
 }

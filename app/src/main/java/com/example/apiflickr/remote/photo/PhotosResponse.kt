@@ -17,12 +17,12 @@ data class PageResponse(
     @SerializedName("perpage")
     val perpage: Int,
     @SerializedName("photo")
-    val photo: List<Photo>,
+    val photo: List<SearchPhotoInfo>,
     @SerializedName("total")
     val total: String
 )
 
-data class Photo(
+data class SearchPhotoInfo(
     @SerializedName("farm")
     val farm: Int,
     @SerializedName("id")
