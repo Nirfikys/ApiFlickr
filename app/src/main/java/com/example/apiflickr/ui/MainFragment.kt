@@ -1,4 +1,4 @@
-package com.example.apiflickr
+package com.example.apiflickr.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
