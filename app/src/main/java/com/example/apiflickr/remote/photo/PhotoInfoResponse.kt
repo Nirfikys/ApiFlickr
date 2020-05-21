@@ -173,7 +173,7 @@ data class Tag(
     @SerializedName("id")
     val id: String,
     @SerializedName("machine_tag")
-    val machineTag: Int,
+    val machineTag: Boolean,
     @SerializedName("raw")
     val raw: String
 )

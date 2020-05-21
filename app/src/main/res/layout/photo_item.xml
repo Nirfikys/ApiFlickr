@@ -9,7 +9,7 @@
             type="com.example.apiflickr.domain.photo.PhotoEntity" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -18,10 +18,11 @@
             imageUrl="@{photo.url}"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:foreground="?selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 </layout>

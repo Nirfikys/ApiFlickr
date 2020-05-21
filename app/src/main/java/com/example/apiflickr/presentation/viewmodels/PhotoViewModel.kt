@@ -33,7 +33,7 @@ class PhotoViewModel : BaseViewModel() {
     @SuppressLint("CheckResult")
     fun searchPhoto(text: String) {
         Observable.create<Page> {
-            it.onNext(photoRepository.searchPhotos(text))
+            it.onNext(photoRepository.searchPhotos(text, page))
             it.onComplete()
         }
             .observeOn(AndroidSchedulers.mainThread())

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.apiflickr.R
 import com.example.apiflickr.databinding.HomeLayoutBinding
 import com.example.apiflickr.presentation.viewmodels.PhotoViewModel
 import com.example.apiflickr.ui.adapters.PhotoAdapter
@@ -39,16 +38,18 @@ class HomeFragment : Fragment() {
 
     private fun setupView() {
         binding.searchButton.setOnClickListener {
-            photoModel.searchPhoto(
-                binding.searchEt.text.toString()
-            )
+            val text = binding.searchEt.text.toString()
+            if (!text.isBlank())
+                photoModel.searchPhoto(
+                    text
+                )
         }
+        binding.pageIndicatorNext.setOnClickListener { photoModel.page += 1 }
+        binding.pageIndicatorPrev.setOnClickListener { photoModel.page -= 1 }
+
         binding.photoRv.layoutManager = GridLayoutManager(context, 3)
         binding.photoRv.adapter = adapter
         adapter.setOnClick({ photo, _ ->
-            if (photo == null) return@setOnClick
-            photoModel.getPhotoInfo(photo.id)
-        },{ photo, view ->
             if (photo == null) return@setOnClick
             photoModel.getPhotoInfo(photo.id)
         })
@@ -62,8 +63,8 @@ class HomeFragment : Fragment() {
 
         observe(photoModel.photoInfoData) {
             val photo = it.getContentIfNotHandled() ?: return@observe
-            HomeFragmentDirections.actionMainFragmentToPhotoInfoFragment(photo)
-            findNavController().navigate(R.id.action_mainFragment_to_photoInfoFragment)
+            val direction = HomeFragmentDirections.actionMainFragmentToPhotoInfoFragment(photo)
+            findNavController().navigate(direction)
         }
     }
 }
