@@ -32,7 +32,7 @@ fun PhotoInfoResponse.toEntity(): PhotoInfoEntity {
             id,
             title.content,
             "https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg",
-            Date(dates.posted.toLong()),
+            Date(dates.posted.toLong() * 1000),
             comments.content
         )
     }

@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="com.example.apiflickr.ui.core.DateUtils" />
+
         <variable
             name="photo"
             type="com.example.apiflickr.domain.photo.PhotoInfoEntity" />
@@ -29,8 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="@{photo.title}"
-            app:layout_constraintStart_toEndOf="@id/photo_info_iv"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photo_info_iv"
             tools:text="@string/app_name" />
 
         <TextView
@@ -39,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
+            android:text='@{DateUtils.formatPosted(context, photo.posted)}'
             app:layout_constraintStart_toEndOf="@id/photo_info_iv"
             app:layout_constraintTop_toBottomOf="@id/photo_info_title"
             tools:text="@string/app_name" />
@@ -48,10 +52,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
             android:text='@{@string/comments + photo.comments}'
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/photo_info_title"
+            app:layout_constraintStart_toEndOf="@+id/photo_info_iv"
+            app:layout_constraintTop_toBottomOf="@+id/photo_info_date"
             tools:text="@string/app_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

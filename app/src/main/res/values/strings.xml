@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ApiFlickr</string>
     <string name="comments">comments:</string>
+    <string name="posted">posted:</string>
     <string name="network_error">no internet access</string>
     <string name="server_error">server error</string>
     <string name="other_error">An error has occurred</string>
