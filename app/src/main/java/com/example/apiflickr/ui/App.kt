@@ -2,6 +2,7 @@ package com.example.apiflickr.ui
 
 import android.app.Application
 import com.example.apiflickr.presentation.modules.AppModule
+import com.example.apiflickr.presentation.modules.CacheModule
 import com.example.apiflickr.presentation.modules.RemoteModule
 import com.example.apiflickr.presentation.viewmodels.PhotoViewModel
 import dagger.Component
@@ -25,7 +26,7 @@ class App : Application() {
 }
 
 @Singleton
-@Component(modules = [AppModule::class, RemoteModule::class])
+@Component(modules = [AppModule::class, RemoteModule::class, CacheModule::class])
 interface AppComponent {
 
     //activities

@@ -1,6 +1,7 @@
 package com.example.apiflickr.presentation.modules
 
 import android.content.Context
+import com.example.apiflickr.domain.photo.PhotoCache
 import com.example.apiflickr.domain.photo.PhotoRemote
 import com.example.apiflickr.domain.photo.PhotoRepository
 import com.example.apiflickr.domain.photo.PhotoRepositoryImpl
@@ -17,7 +18,7 @@ class AppModule(private val context: Context) {
 
     @Provides
     @Singleton
-    fun provideMovieRepository(photoRemote: PhotoRemote): PhotoRepository{
-        return PhotoRepositoryImpl(photoRemote)
+    fun provideMovieRepository(cache: PhotoCache, photoRemote: PhotoRemote): PhotoRepository {
+        return PhotoRepositoryImpl(photoRemote, cache)
     }
 }

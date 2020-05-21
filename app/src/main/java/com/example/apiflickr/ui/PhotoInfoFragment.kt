@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.apiflickr.databinding.PhotoInfoLayoutBinding
 import com.example.apiflickr.domain.photo.PhotoInfoEntity
+import com.example.apiflickr.ui.core.BaseFragment
 
-class PhotoInfoFragment : Fragment() {
+class PhotoInfoFragment : BaseFragment() {
     lateinit var binding: PhotoInfoLayoutBinding
     lateinit var photo: PhotoInfoEntity
 

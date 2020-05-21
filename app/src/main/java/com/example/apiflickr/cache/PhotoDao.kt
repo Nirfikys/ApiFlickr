@@ -20,6 +20,6 @@ interface PhotoDao {
     fun searchPhoto(text: String): List<PhotoCacheEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun savePhotoPreview(photo: PhotoCacheEntity)
+    fun savePhotoPreview(photos: List<PhotoCacheEntity>)
 
 }

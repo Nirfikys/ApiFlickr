@@ -15,7 +15,7 @@ class PhotoCacheImpl(
     }
 
     override fun savePhotosPreview(photos: List<PhotoEntity>) {
-        photos.forEach { photoDao.savePhotoPreview(it.toCache()) }
+        photos.map { it.toCache() }
     }
 
     override fun searchPhotos(text: String, page: Int): Page {

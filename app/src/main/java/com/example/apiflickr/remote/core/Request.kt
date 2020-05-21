@@ -1,5 +1,6 @@
 package com.example.apiflickr.remote.core
 
+import com.example.apiflickr.domain.Failure
 import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
@@ -13,7 +14,7 @@ class Request @Inject constructor(
     fun <T : BaseResponse, R> make(call: Call<T>, transform: (T) -> R): R {
         return when (networkHandler.isConnected) {
             true -> execute(call, transform)
-            false -> throw Exception()
+            false -> throw Failure.NetworkConnectionError
         }
     }
 
@@ -26,8 +27,8 @@ class Request @Inject constructor(
                     throw Exception(response.body()?.message)
                 }
             }
-        }catch (e:Exception){
-            throw Exception()
+        } catch (e: Exception) {
+            throw Failure.ServerError
         }
     }
 

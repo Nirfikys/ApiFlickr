@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.apiflickr.databinding.HomeLayoutBinding
 import com.example.apiflickr.presentation.viewmodels.PhotoViewModel
 import com.example.apiflickr.ui.adapters.PhotoAdapter
+import com.example.apiflickr.ui.core.BaseFragment
 import com.example.apiflickr.ui.core.observe
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     private lateinit var binding: HomeLayoutBinding
     private lateinit var photoModel: PhotoViewModel
@@ -65,6 +65,11 @@ class HomeFragment : Fragment() {
             val photo = it.getContentIfNotHandled() ?: return@observe
             val direction = HomeFragmentDirections.actionMainFragmentToPhotoInfoFragment(photo)
             findNavController().navigate(direction)
+        }
+
+        observe(photoModel.failureData) {
+            val exception = it.getContentIfNotHandled() ?: return@observe
+            showMessageError(exception)
         }
     }
 }

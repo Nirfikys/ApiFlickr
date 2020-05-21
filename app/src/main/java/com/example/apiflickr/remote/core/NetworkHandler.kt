@@ -8,5 +8,6 @@ import javax.inject.Singleton
 @Singleton
 open class NetworkHandler @Inject constructor(val context: Context) {
 
-    var isConnected: Boolean = true
+    var isConnected: Boolean =
+        (context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo?.isConnected ?: false
 }
