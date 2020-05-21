@@ -1,5 +1,7 @@
 package com.example.apiflickr.domain
 
+import com.example.apiflickr.cache.PhotoCacheEntity
+import com.example.apiflickr.cache.PhotoInfoCacheEntity
 import com.example.apiflickr.domain.photo.PhotoEntity
 import com.example.apiflickr.domain.photo.PhotoInfoEntity
 import com.example.apiflickr.remote.photo.PageResponse
@@ -36,3 +38,38 @@ fun PhotoInfoResponse.toEntity(): PhotoInfoEntity {
     }
 }
 
+fun PhotoInfoEntity.toCache(): PhotoInfoCacheEntity {
+    return PhotoInfoCacheEntity(
+        id,
+        title,
+        url,
+        posted.time,
+        comments
+    )
+}
+
+fun PhotoEntity.toCache(): PhotoCacheEntity {
+    return PhotoCacheEntity(
+        id,
+        url,
+        title
+    )
+}
+
+fun PhotoInfoCacheEntity.toEntity(): PhotoInfoEntity {
+    return PhotoInfoEntity(
+        id,
+        title,
+        url,
+        Date(posted),
+        comments
+    )
+}
+
+fun PhotoCacheEntity.toEntity(): PhotoEntity {
+    return PhotoEntity(
+        id,
+        url,
+        title
+    )
+}
