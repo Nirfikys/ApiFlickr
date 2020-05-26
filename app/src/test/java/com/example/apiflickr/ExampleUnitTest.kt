@@ -19,11 +19,11 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         val key = "11e385a385f88dd2d5cc8ec6d40f0222"
         val text = "cat"
-        //ServiceFactory.makeService(true).searchPhoto(key, text).execute()
-        val api = ServiceFactory.makeService(true)
-        val context = mock(Context::class.java)
-        val remote = PhotoRemoteImpl(Request(NetworkHandler(context)), api)
+        ServiceFactory.makeService(true).searchPhoto(key, text).execute()
+//        val api = ServiceFactory.makeService(true)
+//        val context = mock(Context::class.java)
+//        val remote = PhotoRemoteImpl(Request(NetworkHandler(context)), api)
 //        remote.searchPhotos(text)
-        remote.getPhotoInfo("49915521846")
+       // remote.getPhotoInfo("49915521846")
     }
 }

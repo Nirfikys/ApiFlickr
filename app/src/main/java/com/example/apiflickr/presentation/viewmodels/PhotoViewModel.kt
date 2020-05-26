@@ -15,9 +15,14 @@ import java.lang.Exception
 import javax.inject.Inject
 
 class PhotoViewModel : BaseViewModel() {
+
+    companion object {
+        const val FIRST_SEARCH_REQUEST = "Cat"
+    }
+
     init {
         App.appComponent.inject(this)
-        getPreview()
+        update()
     }
 
     @Inject
@@ -29,30 +34,21 @@ class PhotoViewModel : BaseViewModel() {
         set(value) {
             if (value <= 0) return
             field = value
-            getPreview()
+            update()
         }
+    private var text = FIRST_SEARCH_REQUEST
 
-    @SuppressLint("CheckResult")
     fun searchPhoto(text: String) {
-        Observable.create<Page> {
-            try {
-                val searchPhotos = photoRepository.searchPhotos(text, page)
-                it.onNext(searchPhotos)
-                photoRepository.savePreviewPhotos(searchPhotos.photo)
-            }catch (e:Failure.NetworkConnectionError){
-                it.onNext(photoRepository.searchSavedPhotos(text))
-            }
-        }
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe({ handleValidResult(pagePhotoData, it) }, { handleFailure(it) })
+        if (this.text == text) return
+        this.text = text
+        page = 1
     }
 
     @SuppressLint("CheckResult")
     fun getPhotoInfo(id: String) {
         Observable.create<PhotoInfoEntity> {
             val savedPhotoInfo = photoRepository.getSavedPhotoInfo(id)
-            if (savedPhotoInfo != null){
+            if (savedPhotoInfo != null) {
                 it.onNext(savedPhotoInfo)
                 it.onComplete()
             }
@@ -63,7 +59,19 @@ class PhotoViewModel : BaseViewModel() {
             .subscribe({ handleValidResult(photoInfoData, HandleOnce(it)) }, { handleFailure(it) })
     }
 
-    fun getPreview() {
-        searchPhoto("cat")
+    @SuppressLint("CheckResult")
+    fun update() {
+        Observable.create<Page> {
+            try {
+                val searchPhotos = photoRepository.searchPhotos(text, page)
+                it.onNext(searchPhotos)
+                photoRepository.savePreviewPhotos(searchPhotos.photo)
+            } catch (e: Failure.NetworkConnectionError) {
+                it.onNext(photoRepository.searchSavedPhotos(text))
+            }
+        }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe({ handleValidResult(pagePhotoData, it) }, { handleFailure(it) })
     }
 }

@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface ApiService {
     companion object {
         //methods
-        const val SEARCH = "?method=flickr.photos.search&format=json&nojsoncallback=1"
+        const val SEARCH = "?method=flickr.photos.search&format=json&nojsoncallback=1&sort=relevance"
         const val INFO = "?method=flickr.photos.getInfo&format=json&nojsoncallback=1"
 
         //params
