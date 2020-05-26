@@ -7,6 +7,7 @@ import com.example.apiflickr.domain.Page
 import com.example.apiflickr.domain.photo.PhotoInfoEntity
 import com.example.apiflickr.domain.photo.PhotoRepository
 import com.example.apiflickr.presentation.core.HandleOnce
+import com.example.apiflickr.remote.core.NetworkHandler
 import com.example.apiflickr.ui.App
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -68,6 +69,7 @@ class PhotoViewModel : BaseViewModel() {
                 photoRepository.savePreviewPhotos(searchPhotos.photo)
             } catch (e: Failure.NetworkConnectionError) {
                 it.onNext(photoRepository.searchSavedPhotos(text))
+                NetworkHandler.connectionCallbackList.add { update() }
             }
         }
             .observeOn(AndroidSchedulers.mainThread())
